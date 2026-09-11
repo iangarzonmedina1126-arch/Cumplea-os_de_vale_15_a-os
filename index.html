@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Galería de fotos del cumpleaños">
+  <title>Fotos del Cumpleaños 🎉</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f1ff;
+      color: #25213a;
+    }
+    header {
+      text-align: center;
+      padding: 32px 16px 24px;
+      background: linear-gradient(135deg, #5c6bc0, #7e57c2);
+      color: white;
+    }
+    header h1 { margin: 0 0 8px; font-size: 32px; }
+    header p { margin: 0; opacity: .95; }
+    .acciones {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 22px 16px;
+    }
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #5c6bc0;
+      color: white;
+    }
+    button.secundario {
+      background: white;
+      color: #5c6bc0;
+      border: 2px solid #5c6bc0;
+    }
+    input[type=file] { display: none; }
+    #estado {
+      text-align: center;
+      min-height: 24px;
+      padding: 0 16px 18px;
+      font-weight: bold;
+    }
+    .galeria {
+      width: min(1100px, 94%);
+      margin: 0 auto 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 12px;
+    }
+    .foto {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      background: #ddd;
+      cursor: pointer;
+      transition: transform .15s;
+    }
+    .foto:hover { transform: scale(1.02); }
+    .vacio {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 50px 20px;
+      color: #777;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.88);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 10;
+    }
+    .modal img {
+      max-width: 95vw;
+      max-height: 90vh;
+      border-radius: 12px;
+    }
+    .cerrar {
+      position: fixed;
+      top: 15px;
+      right: 18px;
+      font-size: 32px;
+      color: white;
+      background: transparent;
+      padding: 4px 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📸 Fotos del cumpleaños</h1>
+  <p>¡Sube tus fotos y comparte los mejores momentos!</p>
+</header>
+
+<div class="acciones">
+  <label>
+    <input id="selectorFotos" type="file" accept="image/*" multiple>
+    <button type="button" onclick="document.getElementById('selectorFotos').click()">
+      📤 Subir mis fotos
+    </button>
+  </label>
+  <button class="secundario" type="button" onclick="cargarGaleria()">
+    🔄 Actualizar galería
+  </button>
+</div>
+
+<div id="estado"></div>
+<div id="galeria" class="galeria">
+  <div class="vacio">Cargando fotos...</div>
+</div>
+
+<div id="modal" class="modal" onclick="cerrarModal()">
+  <button class="cerrar" onclick="cerrarModal()">×</button>
+  <img id="imagenGrande" src="" alt="Foto">
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
