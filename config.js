@@ -19,7 +19,7 @@
       https://res.cloudinary.com/koib4oby/image/list/cumple.json
 */
 
-const CLOUDINARY_CLOUD_NAME = "kolb4oby";
+const CLOUDINARY_CLOUD_NAME = "koib4oby";
 const CLOUDINARY_UPLOAD_PRESET = "mis15_fotos";
 
 /* Tag público usado para listar las fotos. */
